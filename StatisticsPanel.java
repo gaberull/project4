@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.GridLayout;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;                
 
@@ -22,6 +23,11 @@ public class StatisticsPanel extends JPanel
         setOpaque(true);
         
         setBackground(Color.GRAY);
+        
+        ButtonGroup group = new ButtonGroup();
+        group.add(minimum);
+        group.add(average);
+        group.add(maximum);
         
     }
 }
