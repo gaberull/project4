@@ -13,8 +13,8 @@ public class MesonetFrame extends JFrame
     
     public MesonetFrame(String title)
     {
-        super("title");
-        this.setSize(500, 500);
+        super(title);
+        this.setSize(850, 610);
 
         this.setLocationRelativeTo(null);
 
