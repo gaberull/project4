@@ -26,7 +26,7 @@ public class MesonetFrame extends JFrame
     public MesonetFrame(String title)
     {
         super(title);
-        this.setSize(850, 610);
+        this.setSize(1000, 610);
 
         this.setLocationRelativeTo(null);
 
@@ -80,6 +80,10 @@ public class MesonetFrame extends JFrame
         
         // add statSubPanel to frame
         this.add(westSubPanel, BorderLayout.WEST);
+        
+        // add TabelPanel
+        TabelPanel table = new TabelPanel();
+        this.add(table, BorderLayout.CENTER);
         
         // add actions for when buttons are hit
         calculate.addActionListener(new ActionListener()

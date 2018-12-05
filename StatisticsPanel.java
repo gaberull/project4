@@ -31,7 +31,7 @@ public class StatisticsPanel extends JPanel
         group.add(average);
         group.add(maximum);
         
-        setSize(44, 140);
+        //setSize(150, 140);
         
         setVisible(true);
         setOpaque(true);
