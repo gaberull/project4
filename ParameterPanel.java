@@ -4,6 +4,13 @@ import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
+/**
+ * @author Austin "Gabe" Scott
+ * @version 2018-12-06
+ * 
+ * Parameter Panel
+ *
+ */
 public class ParameterPanel extends JPanel
 {
     public ParameterPanel()

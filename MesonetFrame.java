@@ -12,6 +12,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+/**
+ * @author Austin "Gabe" Scott
+ * @version 2018-12-06
+ * 
+ * Oklahoma Mesonet top Frame
+ *
+ */
 public class MesonetFrame extends JFrame
 {
     
