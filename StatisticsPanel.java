@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;                
 
@@ -18,6 +19,8 @@ public class StatisticsPanel extends JPanel
         add(minimum);
         add(average);
         add(maximum);
+        
+        // add label for top of panel
         
         setVisible(true);
         setOpaque(true);
