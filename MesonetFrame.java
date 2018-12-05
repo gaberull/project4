@@ -35,9 +35,11 @@ public class MesonetFrame extends JFrame
         //this.setLayout(layout);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        FileMenuBar mb = new FileMenuBar();  
-        this.setJMenuBar(mb);  
+        
+        // create menubar
+        setJMenuBar(new FileMenuBar());
+        // FileMenuBar mb = new FileMenuBar();  
+        // this.setJMenuBar(mb);  
          
         
         // adding buttons to bottom of frame
