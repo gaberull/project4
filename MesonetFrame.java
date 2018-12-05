@@ -124,11 +124,11 @@ public class MesonetFrame extends JFrame
     {
         //create map data
         String name = file.getName();
-        Integer year = Integer.parseInt(name.substring(0, 3));
-        Integer month = Integer.parseInt(name.substring(4, 5));
-        Integer day = Integer.parseInt(name.substring(6, 7));
-        Integer hour = Integer.parseInt(name.substring(8, 9));
-        Integer minute = Integer.parseInt(name.substring(10, 11));
+        Integer year = Integer.parseInt(name.substring(0, 4));
+        Integer month = Integer.parseInt(name.substring(4, 6));
+        Integer day = Integer.parseInt(name.substring(6, 8));
+        Integer hour = Integer.parseInt(name.substring(8, 10));
+        Integer minute = Integer.parseInt(name.substring(10, 12));
         mapData = new MapData(year, month, day, hour, minute);
         mapData.parseFile(file);
         

@@ -1,6 +1,7 @@
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -111,6 +112,8 @@ public class Statistics extends Observation implements DateTimeComparable
         Date date = calendar.getTime();
         SimpleDateFormat fmt = new SimpleDateFormat(DATE_TIME_FORMAT); 
         fmt.setCalendar(calendar);
+        TimeZone utc = TimeZone.getTimeZone("UTC");
+        fmt.setTimeZone(utc);
         String dateFormatted = fmt.format(date);
         
         return dateFormatted;
