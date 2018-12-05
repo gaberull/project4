@@ -171,6 +171,7 @@ public class MapData
             // read the next line
             tempData = br.readLine();
         }
+        br.close();
         // Call the calculateStatistics method
         calculateStatistics();
     }

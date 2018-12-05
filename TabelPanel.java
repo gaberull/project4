@@ -46,7 +46,7 @@ public class TabelPanel extends JPanel
             reportingStations, String date)
     {
         DefaultTableModel model = (DefaultTableModel) this.table.getModel();
-        model.addRow(new Object[]{station, parameter, statistics, reportingStations, date});
+        model.addRow(new Object[]{station, parameter, statistics, value, reportingStations, date});
     }
     
 }

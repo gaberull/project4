@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Enumeration;
 
+import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,8 +40,17 @@ public class StatisticsPanel extends JPanel
         setOpaque(true);
     }
     
-    public ButtonGroup getButtonGroup()
+    public String getSelectedStatistic()
     {
-        return buttonGroup;
+        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            {
+                if (button.isSelected())
+                {
+                    return button.getText();
+                }
+            }
+        }
+        return null;
     }
 }

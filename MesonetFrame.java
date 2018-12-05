@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.swing.AbstractButton;
@@ -83,16 +85,13 @@ public class MesonetFrame extends JFrame
         westSubPanel.add(paramPanel);
         westSubPanel.add(statPanel); 
         
-        // Create JLabel for top of Parameter and Statistics boxes
-        JLabel param = new JLabel("Parmater");
-        JLabel stat = new JLabel("Statistics");
         
         // add statSubPanel to frame
         this.add(westSubPanel, BorderLayout.WEST);
         
         // add TabelPanel
-        TabelPanel table = new TabelPanel();
-        this.add(table, BorderLayout.CENTER);
+        tabelPanel = new TabelPanel();
+        this.add(tabelPanel, BorderLayout.CENTER);
         
         // add actions for when buttons are hit
         calculate.addActionListener(new ActionListener()
@@ -100,24 +99,11 @@ public class MesonetFrame extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                ButtonGroup group = statPanel.getButtonGroup();
-                for (Enumeration<AbstractButton> buttons = group.getElements(); buttons.hasMoreElements();) {
-                    AbstractButton button = buttons.nextElement();
-
-                    if (button.isSelected()) {
-                        if(button.getText() == "MINIMUM")
-                        {
-                            
-                        }
-                        else if (button.getText() == "AVERAGE")
-                        {
-                            
-                        }
-                        else
-                        {
-                            
-                        }
-                    }
+                String statistic = statPanel.getSelectedStatistic();
+                ArrayList<String> parameterList = paramPanel.getSelectedCheckBoxes();
+                for (String param : parameterList)
+                {
+                    loadStatistic(param, statistic);
                 }
             }
         });
@@ -127,14 +113,14 @@ public class MesonetFrame extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                
+                System.exit(0);
             }
         });
         
         this.setVisible(true);
     }
     
-    private void loadFile(File file)
+    private void loadFile(File file) throws IOException
     {
         //create map data
         String name = file.getName();
@@ -144,6 +130,8 @@ public class MesonetFrame extends JFrame
         Integer hour = Integer.parseInt(name.substring(8, 9));
         Integer minute = Integer.parseInt(name.substring(10, 11));
         mapData = new MapData(year, month, day, hour, minute);
+        mapData.parseFile(file);
+        
     }
     
     private TabelPanel getTabelPanel()
@@ -177,7 +165,15 @@ public class MesonetFrame extends JFrame
                         int returnVal = fc.showOpenDialog(i1);
                         if (returnVal == JFileChooser.APPROVE_OPTION) {
                             File file = fc.getSelectedFile();
-                            MesonetFrame.this.loadFile(file);
+                            try
+                            {
+                                MesonetFrame.this.loadFile(file);
+                            }
+                            catch (IOException e1)
+                            {
+                                // TODO Auto-generated catch block
+                                e1.printStackTrace();
+                            }
                         }
                     }
                 });
@@ -188,7 +184,7 @@ public class MesonetFrame extends JFrame
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        
+                        System.exit(0);
                     }
                 });
                 
