@@ -4,8 +4,15 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Enumeration;
 
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -22,6 +29,8 @@ import javax.swing.JPanel;
  */
 public class MesonetFrame extends JFrame
 {
+    private MapData mapData;
+    private TabelPanel tabelPanel;
     
     public MesonetFrame(String title)
     {
@@ -91,7 +100,25 @@ public class MesonetFrame extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                
+                ButtonGroup group = statPanel.getButtonGroup();
+                for (Enumeration<AbstractButton> buttons = group.getElements(); buttons.hasMoreElements();) {
+                    AbstractButton button = buttons.nextElement();
+
+                    if (button.isSelected()) {
+                        if(button.getText() == "MINIMUM")
+                        {
+                            
+                        }
+                        else if (button.getText() == "AVERAGE")
+                        {
+                            
+                        }
+                        else
+                        {
+                            
+                        }
+                    }
+                }
             }
         });
         
@@ -105,6 +132,31 @@ public class MesonetFrame extends JFrame
         });
         
         this.setVisible(true);
+    }
+    
+    private void loadFile(File file)
+    {
+        //create map data
+        String name = file.getName();
+        Integer year = Integer.parseInt(name.substring(0, 3));
+        Integer month = Integer.parseInt(name.substring(4, 5));
+        Integer day = Integer.parseInt(name.substring(6, 7));
+        Integer hour = Integer.parseInt(name.substring(8, 9));
+        Integer minute = Integer.parseInt(name.substring(10, 11));
+        mapData = new MapData(year, month, day, hour, minute);
+    }
+    
+    private TabelPanel getTabelPanel()
+    {
+        return tabelPanel;
+    }
+    
+    private void loadStatistic(String parameter, String statistic)
+    {
+        StatsType statType = StatsType.valueOf(statistic);
+        Statistics stat = mapData.getStatistics(statType, parameter);
+        getTabelPanel().addRow(stat.getStid(), parameter, statistic, Double.toString(stat.getValue()), 
+                Integer.toString(stat.getNumberOfReportingStations()), stat.getUTCDateTimeString());
     }
         public class FileMenuBar extends JMenuBar
         {
@@ -121,7 +173,12 @@ public class MesonetFrame extends JFrame
                     @Override
                     public void actionPerformed(ActionEvent e)
                     {
-                        
+                        JFileChooser fc = new JFileChooser();
+                        int returnVal = fc.showOpenDialog(i1);
+                        if (returnVal == JFileChooser.APPROVE_OPTION) {
+                            File file = fc.getSelectedFile();
+                            MesonetFrame.this.loadFile(file);
+                        }
                     }
                 });
                 
@@ -152,4 +209,5 @@ public class MesonetFrame extends JFrame
         }
 
 }
+
 

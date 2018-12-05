@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class TabelPanel extends JPanel
 {
+    private JTable table;
     public TabelPanel()
     {
         super();
@@ -16,7 +17,7 @@ public class TabelPanel extends JPanel
         // Create JTable at top
         DefaultTableModel model = new DefaultTableModel(); 
         JTable table = new JTable(model); 
-
+        this.table =table;
         // add scroll pane
         JScrollPane scrollPane = new JScrollPane();
 
@@ -35,9 +36,17 @@ public class TabelPanel extends JPanel
         setVisible(true);
     }
     
-    public void addRow()
+    
+    public JTable getTable()
     {
-        
+        return table;
+    }
+    
+    public void addRow(String station, String parameter, String statistics, String value, String 
+            reportingStations, String date)
+    {
+        DefaultTableModel model = (DefaultTableModel) this.table.getModel();
+        model.addRow(new Object[]{station, parameter, statistics, reportingStations, date});
     }
     
 }

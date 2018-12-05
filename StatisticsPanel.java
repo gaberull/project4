@@ -9,6 +9,7 @@ import javax.swing.border.TitledBorder;
 
 public class StatisticsPanel extends JPanel
 {
+    private ButtonGroup buttonGroup;
     public StatisticsPanel()
     {
         setLayout(new GridLayout(3,0));
@@ -26,14 +27,19 @@ public class StatisticsPanel extends JPanel
         
         setBackground(Color.GRAY);
         
-        ButtonGroup group = new ButtonGroup();
-        group.add(minimum);
-        group.add(average);
-        group.add(maximum);
-        
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(minimum);
+        buttonGroup.add(average);
+        buttonGroup.add(maximum);
+        maximum.setSelected(true);
         //setSize(150, 140);
         
         setVisible(true);
         setOpaque(true);
+    }
+    
+    public ButtonGroup getButtonGroup()
+    {
+        return buttonGroup;
     }
 }

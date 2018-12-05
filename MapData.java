@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.TreeMap;
  * 
  */
 public class MapData
-{
+{  
     private HashMap<String, ArrayList<Observation>> dataCatalog;
     private EnumMap<StatsType, TreeMap<String, Statistics>> statistics;
     private TreeMap<String, Integer> paramPosition;
@@ -40,15 +41,17 @@ public class MapData
      * @param minute
      * @param directory
      */
-    public MapData(int year, int month, int day, int hour, int minute, String directory)
+    public MapData(int year, int month, int day, int hour, int minute)
     {
         this.utcDateTime = new GregorianCalendar(year, month, day, hour, minute);
-        createFileName(this.utcDateTime.get(Calendar.YEAR), this.utcDateTime.get(Calendar.MONTH),
-                this.utcDateTime.get(Calendar.DAY_OF_MONTH), 
-                this.utcDateTime.get(Calendar.HOUR_OF_DAY), 
-                this.utcDateTime.get(Calendar.MINUTE), directory);
+//        createFileName(this.utcDateTime.get(Calendar.YEAR), this.utcDateTime.get(Calendar.MONTH),
+//                this.utcDateTime.get(Calendar.DAY_OF_MONTH), 
+//                this.utcDateTime.get(Calendar.HOUR_OF_DAY), 
+//                this.utcDateTime.get(Calendar.MINUTE), directory);
         
     }
+    
+    
 
     /**
      * Formats to correct length the name of file and returns a string containing
@@ -122,12 +125,12 @@ public class MapData
      * 
      * @throws IOException
      */
-    public void parseFile() throws IOException
+    public void parseFile(File file) throws IOException
     {
         // setting a string variable to hold the file path and calling function to
         // create the file name
-        String filePath = System.getProperty("user.dir") + "/" + this.fileName;
-        BufferedReader br = new BufferedReader(new FileReader(filePath));
+        
+        BufferedReader br = new BufferedReader(new FileReader(file));
 
         // dump first few lines to get to first line of data that we want
         String tempData = br.readLine();

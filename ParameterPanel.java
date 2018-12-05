@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
@@ -16,6 +17,7 @@ import javax.swing.border.TitledBorder;
  */
 public class ParameterPanel extends JPanel
 {
+    ArrayList<JCheckBox> boxes = new ArrayList<>();
     public ParameterPanel()
     {
         super();
@@ -27,6 +29,12 @@ public class ParameterPanel extends JPanel
         JCheckBox wspd = new JCheckBox("WSPD");
         JCheckBox pres = new JCheckBox("PRES");
         
+        boxes.add(tair);
+        boxes.add(ta9m);
+        boxes.add(srad);
+        boxes.add(wspd);
+        boxes.add(pres);
+        
         add(tair);
         add(ta9m);
         add(srad);
@@ -35,8 +43,25 @@ public class ParameterPanel extends JPanel
         
         setBorder(new TitledBorder(null, "Parameter",TitledBorder.LEFT, TitledBorder.TOP));
         setBackground(Color.LIGHT_GRAY);
+        
+        
+        
         setVisible(true);
         setSize(30, 140);
         
+    }
+    
+    public ArrayList<String> getSelectedCheckBoxes()
+    {
+        ArrayList<String> list = new ArrayList<>();
+        
+        for (JCheckBox box : boxes)
+        {
+            if (box.isSelected())
+            {
+                list.add(box.getText());
+            }
+        }
+        return list;
     }
 }
