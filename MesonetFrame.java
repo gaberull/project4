@@ -44,21 +44,14 @@ public class MesonetFrame extends JFrame
     {
         super(title);
         this.setSize(1000, 610);
-
         this.setLocationRelativeTo(null);
-
         setLayout(new BorderLayout());
-        //BorderLayout layout = new BorderLayout();
-        //this.setLayout(layout);
-
+        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // create menubar
         setJMenuBar(new FileMenuBar());
-        // FileMenuBar mb = new FileMenuBar();  
-        // this.setJMenuBar(mb);  
          
-        
         // adding buttons to bottom of frame
         JButton calculate = new JButton("Calculate");
         JButton exit = new JButton("Exit");
@@ -137,18 +130,21 @@ public class MesonetFrame extends JFrame
      */
     private void loadFile(File file) throws IOException
     {
-        //create map data
         if (file == null)
         {
             return;
         }
         this.file = file;
+        
+        // parse integer from file name
         String name = file.getName();
         Integer year = Integer.parseInt(name.substring(0, 4));
         Integer month = Integer.parseInt(name.substring(4, 6));
         Integer day = Integer.parseInt(name.substring(6, 8));
         Integer hour = Integer.parseInt(name.substring(8, 10));
         Integer minute = Integer.parseInt(name.substring(10, 12));
+        
+        // create mapData object and parseFile
         mapData = new MapData(year, month, day, hour, minute);
         mapData.parseFile(file);
         
@@ -181,6 +177,7 @@ public class MesonetFrame extends JFrame
             public FileMenuBar() 
             {
                 super();
+                // create menu options 
                 JMenu menu = new JMenu("File");   
                 JMenuItem i1 = new JMenuItem("Open Data File"); 
                 JMenuItem i2 = new JMenuItem("Exit");  
@@ -219,6 +216,7 @@ public class MesonetFrame extends JFrame
                     }
                 });
                 
+                // add items to menubar
                 menu.add(i1);    
                 menu.add(i2); 
                 this.add(menu);  
@@ -226,8 +224,6 @@ public class MesonetFrame extends JFrame
             }
             
         }
-        
-        
     
         /**
          * Main
@@ -239,5 +235,3 @@ public class MesonetFrame extends JFrame
         }
 
 }
-
-
