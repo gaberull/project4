@@ -33,6 +33,7 @@ public class MesonetFrame extends JFrame
 {
     private MapData mapData;
     private TabelPanel tabelPanel;
+    private File file;
     
     public MesonetFrame(String title)
     {
@@ -99,6 +100,10 @@ public class MesonetFrame extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                if (MesonetFrame.this.file == null)
+                {
+                    return;
+                }
                 String statistic = statPanel.getSelectedStatistic();
                 ArrayList<String> parameterList = paramPanel.getSelectedCheckBoxes();
                 for (String param : parameterList)
@@ -123,6 +128,11 @@ public class MesonetFrame extends JFrame
     private void loadFile(File file) throws IOException
     {
         //create map data
+        if (file == null)
+        {
+            return;
+        }
+        this.file = file;
         String name = file.getName();
         Integer year = Integer.parseInt(name.substring(0, 4));
         Integer month = Integer.parseInt(name.substring(4, 6));
@@ -163,6 +173,7 @@ public class MesonetFrame extends JFrame
                     {
                         JFileChooser fc = new JFileChooser();
                         int returnVal = fc.showOpenDialog(i1);
+                        
                         if (returnVal == JFileChooser.APPROVE_OPTION) {
                             File file = fc.getSelectedFile();
                             try
