@@ -35,6 +35,11 @@ public class MesonetFrame extends JFrame
     private TabelPanel tabelPanel;
     private File file;
     
+    /**
+     * Constructor
+     * 
+     * @param title
+     */
     public MesonetFrame(String title)
     {
         super(title);
@@ -125,6 +130,11 @@ public class MesonetFrame extends JFrame
         this.setVisible(true);
     }
     
+    /**
+     * Load file
+     * @param file
+     * @throws IOException
+     */
     private void loadFile(File file) throws IOException
     {
         //create map data
@@ -144,11 +154,20 @@ public class MesonetFrame extends JFrame
         
     }
     
+    /**
+     * Get TabelPanel
+     * @return TabelPanel
+     */
     private TabelPanel getTabelPanel()
     {
         return tabelPanel;
     }
     
+    /**
+     * Load Statistic
+     * @param parameter
+     * @param statistic
+     */
     private void loadStatistic(String parameter, String statistic)
     {
         StatsType statType = StatsType.valueOf(statistic);
@@ -158,6 +177,7 @@ public class MesonetFrame extends JFrame
     }
         public class FileMenuBar extends JMenuBar
         {
+
             public FileMenuBar() 
             {
                 super();
@@ -209,7 +229,10 @@ public class MesonetFrame extends JFrame
         
         
     
-        
+        /**
+         * Main
+         * @param args
+         */
         public static void main(String[] args)
         {
             MesonetFrame frame = new MesonetFrame("Oklahoma Mesonet - Statistics Calculator");

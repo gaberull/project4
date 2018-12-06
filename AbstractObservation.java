@@ -4,7 +4,7 @@
 
 /**
  * @author Austin "Gabe" Scott
- * @version 2018-12-04
+ * @version 2018-12-06
  * t
  */
 public abstract class AbstractObservation

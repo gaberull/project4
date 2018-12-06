@@ -26,7 +26,6 @@ public class MapData
     private final String TA9M = "TA9M";
     private final String TAIR = "TAIR";
     private final String SRAD = "SRAD";
-    // private final String STID = "STID";  Commenting out b/c costing points with Webcat
     private final String MESONET = "Mesonet";
     private String fileName;
     private GregorianCalendar utcDateTime;
@@ -129,7 +128,6 @@ public class MapData
     {
         // setting a string variable to hold the file path and calling function to
         // create the file name
-        
         BufferedReader br = new BufferedReader(new FileReader(file));
 
         // dump first few lines to get to first line of data that we want

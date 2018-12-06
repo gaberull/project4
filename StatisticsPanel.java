@@ -9,13 +9,22 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;                
 
+/**
+ * @author Austin "Gabe" Scott
+ * @version 2018-12-06
+ * 
+ * StatisticsPanel Class
+ *
+ */
 public class StatisticsPanel extends JPanel
 {
     private ButtonGroup buttonGroup;
     public StatisticsPanel()
     {
+        // set layout
         setLayout(new GridLayout(3,0));
         
+        // create buttons
         JRadioButton minimum = new JRadioButton("MINIMUM");
         JRadioButton average = new JRadioButton("AVERAGE");
         JRadioButton maximum = new JRadioButton("MAXIMUM");
@@ -29,17 +38,22 @@ public class StatisticsPanel extends JPanel
         
         setBackground(Color.GRAY);
         
+        // button group makes one button selectable only
         buttonGroup = new ButtonGroup();
         buttonGroup.add(minimum);
         buttonGroup.add(average);
         buttonGroup.add(maximum);
         maximum.setSelected(true);
-        //setSize(150, 140);
         
+        // set visible
         setVisible(true);
         setOpaque(true);
     }
     
+    /**
+     * Get selected Statistic
+     * @return String
+     */
     public String getSelectedStatistic()
     {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {

@@ -6,6 +6,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * @author Austin "Gabe" Scott
+ * @version 2018-12-06
+ * 
+ * TabelPanel Class
+ *
+ */
 public class TabelPanel extends JPanel
 {
     private JTable table;
@@ -36,12 +43,25 @@ public class TabelPanel extends JPanel
         setVisible(true);
     }
     
-    
+    /**
+     * Get table
+     * @return JTable
+     */
     public JTable getTable()
     {
         return table;
     }
     
+    /**
+     * Add row to table
+     * 
+     * @param station
+     * @param parameter
+     * @param statistics
+     * @param value
+     * @param reportingStations
+     * @param date
+     */
     public void addRow(String station, String parameter, String statistics, String value, String 
             reportingStations, String date)
     {

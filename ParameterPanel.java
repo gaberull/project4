@@ -51,6 +51,10 @@ public class ParameterPanel extends JPanel
         
     }
     
+    /**
+     * Get selected checkboxes
+     * @return ArrayList<String>
+     */
     public ArrayList<String> getSelectedCheckBoxes()
     {
         ArrayList<String> list = new ArrayList<>();
